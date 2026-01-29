@@ -16,7 +16,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # AWS Amplify server - React code deployed
+    allow_origins=["https://master.dc7qu2zsg8cn4.amplifyapp.com",  # AWS Amplify server - React code deployed
+        "https://gita-spritual.duckdns.org"    # Backend domain
+                  ],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -136,4 +138,5 @@ async def ask(query: Query):
     except Exception as e:
 
         raise HTTPException(status_code=500, detail=str(e))
+
 
