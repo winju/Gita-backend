@@ -78,7 +78,7 @@ async def ask(query: Query):
         classification = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "Classify if the following user query is devotional/spiritual. Reply only 'devotional' or 'not devotional'."},
+                {"role": "system", "content": "Classify if the following user query is anyway related to Hindu scriptures that is all the upanishads, bhagvatam, puranas, gita, ramayan etc. Reply only 'devotional' or 'not devotional'."},
                 {"role": "user", "content": query.query}
             ]
         )
@@ -138,5 +138,6 @@ async def ask(query: Query):
     except Exception as e:
 
         raise HTTPException(status_code=500, detail=str(e))
+
 
 
