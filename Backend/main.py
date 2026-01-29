@@ -75,18 +75,18 @@ async def ask(query: Query):
     try:
 
         # Step 0: Classify the query before answering
-        classification = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "Classify if the following user query is anyway related to Hindu scriptures that is all the upanishads, bhagvatam, puranas, gita, ramayan etc. Reply only 'devotional' or 'not devotional'."},
-                {"role": "user", "content": query.query}
-            ]
-        )
+        # classification = client.chat.completions.create(
+        #     model="gpt-4o-mini",
+        #     messages=[
+        #         {"role": "system", "content": "Classify if the following user query is anyway related to Hindu scriptures that is all the upanishads, bhagvatam, puranas, gita, ramayan etc. Reply only 'devotional' or 'not devotional'."},
+        #         {"role": "user", "content": query.query}
+        #     ]
+        # )
 
-        category = classification.choices[0].message.content.strip().lower()
+        # category = classification.choices[0].message.content.strip().lower()
 
-        if "not devotional" in category:
-            raise HTTPException(status_code=400, detail="Only devotional questions are allowed 🙏")
+        # if "not devotional" in category:
+        #     raise HTTPException(status_code=400, detail="Only devotional questions are allowed 🙏")
 
 
         # 1. Build muni-style prompt
@@ -138,6 +138,7 @@ async def ask(query: Query):
     except Exception as e:
 
         raise HTTPException(status_code=500, detail=str(e))
+
 
 
 
